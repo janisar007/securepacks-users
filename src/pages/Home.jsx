@@ -6,6 +6,7 @@ import axios from "axios"
 const Home = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
+  let num = 0;
     // const [page, setPage] = useState(0);
     // const pageSize = 3;
 
@@ -46,17 +47,21 @@ const Home = () => {
         <div className="flex w-full items-center justify-center flex-col">
             <ul className="flex flex-col w-[90%] bg-white gap-3 m-5">
             {loading &&  <div className="flex w-full bg-[#64748B] border-black border-[1px] p-3 shadow-md text-white">
-                <div className="flex w-[33%] items-center justify-center bg-[#64748B] ">Name</div>
-                <div className="flex w-[33%] items-center justify-center bg-[#64748B] ">Email</div>
-                <div className="flex w-[33%] items-center justify-center bg-[#64748B] ">Source</div>
+                <div className="flex w-[10%] items-center justify-center bg-[#64748B] ">Sn.</div>
+                <div className="flex w-[30%] items-center justify-center bg-[#64748B] ">Name</div>
+                <div className="flex w-[30%] items-center justify-center bg-[#64748B] ">Email</div>
+                <div className="flex w-[30%] items-center justify-center bg-[#64748B] ">Source</div>
               </div>}
-                {data.map((item, index) => (
-                    <div className="flex w-full  border-black border-[1px] p-3 shadow-md">
-                      <div className="flex w-[33%] items-center justify-center bg-white ">{item.name}</div>
-                      <div className="flex w-[33%] items-center justify-center bg-white ">{item.email}</div>
-                      <div className="flex w-[33%] items-center justify-center bg-white ">{item.source}</div>
+                {data.map((item, index) => {
+                    num = num + 1;
+                    return <div className="flex w-full  border-black border-[1px] p-3 shadow-md">
+                      <div className="flex w-[10%] items-center justify-center bg-white ">{num}</div>
+                      <div className="flex w-[30%] items-center justify-center bg-white ">{item.name}</div>
+                      <div className="flex w-[30%] items-center justify-center bg-white ">{item.email}</div>
+                      <div className="flex w-[30%] items-center justify-center bg-white ">{item.source}</div>
                     </div>
-                ))}
+                    
+})}
             </ul>
             <button className="bg-blue-600 text-white p-2 rounded-md" onClick={fetchData}>Get Users</button>
         </div>
