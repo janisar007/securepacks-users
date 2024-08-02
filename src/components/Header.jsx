@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { CiLogout } from "react-icons/ci";
+
 
 const Header = () => {
   const navigate = useNavigate();
@@ -73,15 +75,11 @@ const Header = () => {
           </Link> */}
 
           {/* here you could wander if it is directing to profile page what happend if i click sign in button. see PrivateRoute.jsx in which i protected the route so that if user is authenticated then the image will apear and clicking on it will direct to profile if not then to signin page.  */}
-          <Link to="/profile">
+          <Link className="text-2xl" to="/profile">
             {currentUser ? (
-              <img
-                className="rounded-full h-7 w-7 object-cover"
-                src={currentUser.avator}
-                alt="profile"
-              />
+              <CiLogout/>
             ) : (
-              <li className="text-slate-700 hover:underline">Sign in</li>
+              <li className="text-slate-700 hover:underline"></li>
             )}
           </Link>
         </ul>
